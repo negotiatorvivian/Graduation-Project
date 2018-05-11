@@ -18,6 +18,7 @@ class RePredictWorker(object):
     """docstring for RePredictWorker"""
     def __init__(self, arg1, arg2):
         super(RePredictWorker, self).__init__()
+        self.input_path = arg1
         self.origin_data = pd.read_csv(arg1) 
         self.path = arg2
         self.mysql_statistic = MysqlUtil.Mysql(conf = MysqlConf.SHOPPING)
@@ -50,6 +51,10 @@ class RePredictWorker(object):
         if len(sample_list) == 0:
             return False
         data_class_list = np.array(sample_list)
+        sample_list = pd.DataFrame(data_class_list, columns = PredictConf.LABEL)
+        sample = pd.concat([self.origin_data, sample_list], ignore_index = True)
+        sample.to_csv(self.input_path, index = False)
+
         times = np.array([PredictConf.REPEAT_TIME]).repeat(len(sample_list))
         data_class_list = data_class_list.repeat(times, axis = 0)
         sample_list = pd.DataFrame(data_class_list, columns = PredictConf.LABEL)
@@ -83,9 +88,8 @@ class RePredictWorker(object):
 
 
     def train_model(self, sample, target):
-        params = list(PredictConf.PARAMS)
+        params = list(PredictConf.PARAMS.items())
         length = int(sample.shape[0] * 0.8)
-        print(length)
         X_train = sample[:length,:]
         y_lable = target[:length]
         X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_lable, 
@@ -95,7 +99,7 @@ class RePredictWorker(object):
         xgcv = xgb.DMatrix(X_valid, label = y_valid)
         watchlist = [(xgtrain, 'train'),(xgcv,'eval')]
         model_1_xgboost = xgb.train(params, xgtrain, PredictConf.NUM_ROUNDS,
-                                    evals = watchlist, early_stopping_rounds = 200, 
+                                    evals = watchlist, early_stopping_rounds = 500, 
                                     verbose_eval = 100)
 
         model_1_xgboost.save_model(self.path + '/blackFri_1.model')

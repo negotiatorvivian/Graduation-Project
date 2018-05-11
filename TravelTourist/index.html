@@ -597,11 +597,186 @@
 				</div>
 				<div class="w3_submit">
 					<input type="submit" onclick="close()" class="register" value="like" style="left:10%"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<input type="submit" class="register" value="dislike" style="display: inline;background-color: #2c925e; ">
+					<input type="submit" onclick="change_mode()" class="register" value="dislike" style="display: inline;background-color: #2c925e; ">
 				</div>
-
 			</form>
-		</div>
+			<!-- start CheckBox -->
+			<form id="cat-select" style="display: none;" action="javascript:void(0)" class="packages_grids">
+				<div class="packages_grid1">
+		            <div class="package1 col-md-4">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox1" type="checkbox" name="checkboxs" value="1">
+			                <label for="checkbox1">
+			                    Category 1
+			                </label>
+			            </div>
+			        </div>
+		            <div class="package1 col-md-4">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox2" type="checkbox" name="checkboxs" value="2">
+			                <label for="checkbox2">
+			                    Category 2
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox3" type="checkbox" value="3" name="checkboxs">
+			                <label for="checkbox3">
+			                    Category 3
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox4" type="checkbox" value="4" name="checkboxs">
+			                <label for="checkbox4">
+			                    Category 4
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox5" type="checkbox" value="5" name="checkboxs">
+			                <label for="checkbox5">
+			                    Category 5
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox6" type="checkbox" value="6" name="checkboxs">
+			                <label for="checkbox6">
+			                    Category 6
+			                </label>
+			            </div>
+			        </div>			     
+
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox7" type="checkbox" value="7" name="checkboxs">
+			                <label for="checkbox7">
+			                    Category 7
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox8" type="checkbox" value="8" name="checkboxs">
+			                <label for="checkbox8">
+			                    Category 8
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox9" type="checkbox" value="9" name="checkboxs">
+			                <label for="checkbox9">
+			                    Category 9
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox10" type="checkbox" value="10" name="checkboxs">
+			                <label for="checkbox10">
+			                    Category 10
+			                </label>
+			            </div>
+			        </div>
+<!-- 		        </div>
+		        <div class="packages_grid1"> -->
+		            <div class="package1 col-md-4">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox11" value="11" type="checkbox" name="checkboxs">
+			                <label for="checkbox11">
+			                    Category 11
+			                </label>
+			            </div>
+			        </div>
+		            <div class="package1 col-md-4">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox12" value="12" type="checkbox" name="checkboxs">
+			                <label for="checkbox12">
+			                    Category 12
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox13" value="13" type="checkbox" name="checkboxs">
+			                <label for="checkbox13">
+			                    Category 13
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox14" value="14" type="checkbox" name="checkboxs">
+			                <label for="checkbox14">
+			                    Category 14
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox15" value="15" type="checkbox" name="checkboxs">
+			                <label for="checkbox15">
+			                    Category 15
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox16" value="16" type="checkbox" name="checkboxs">
+			                <label for="checkbox16">
+			                    Category 16
+			                </label>
+			            </div>
+			        </div>			     
+
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox17" value="17" type="checkbox" name="checkboxs">
+			                <label for="checkbox17">
+			                    Category 17
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox18" value="18" type="checkbox" name="checkboxs">
+			                <label for="checkbox18">
+			                    Category 18
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox19" value="19" type="checkbox" name="checkboxs">
+			                <label for="checkbox19">
+			                    Category 19
+			                </label>
+			            </div>
+			        </div>
+			        <div class="col-md-4 package1">
+			            <div class="checkbox checkbox-danger">
+			                <input id="checkbox20" value="20" type="checkbox" name="checkboxs">
+			                <label for="checkbox20">
+			                    Category 20
+			                </label>
+			            </div>
+			        </div>
+	            </div>
+	            <div class="w3_submit">
+					<input type="submit" onclick="get_option()" class="register" value="Submit" style="background-color: #2c925e;     width: 100%;">
+				</div>
+		</form>
+		<!-- end CheckBox -->
+			
+
+			</div>
+              </div>
 	</div>
 	<!-- <script type="text/javascript">
 		window.onload = function () {
@@ -779,12 +954,12 @@
 						}
 					},
 					fail : function(res){
-						alert('服务器旅游去了,待会再试试~');
+						// alert('服务器旅游去了,待会再试试~');
 						return false;
 					},
 					complete : function(XMLHttpRequest,status){
 				　　　　if(status=='timeout'){//超时,status还有success,error等值的情况
-							alert('服务器旅游去了,待会再试试~');
+							// alert('服务器旅游去了,待会再试试~');
 				 　　　　　 	load_data.abort();
 							return false;
 				　　　　}

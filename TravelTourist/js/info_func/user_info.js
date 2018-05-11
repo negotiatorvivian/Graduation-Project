@@ -61,7 +61,7 @@ function send_info(){
 		},
 		complete : function(XMLHttpRequest,status){
 	　　　　if(status=='timeout'){//超时,status还有success,error等值的情况
-				alert('服务器旅游去了,待会再试试~');
+				// alert('服务器旅游去了,待会再试试~');
 	 　　　　　 	load_data.abort();
 				return false;
 	　　　　}

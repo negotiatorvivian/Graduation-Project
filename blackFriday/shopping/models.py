@@ -34,3 +34,20 @@ class ShoppingUsers(models.Model):
     class Meta:
         managed = False
         db_table = 'shopping_users'
+
+
+class NegativeSamples(models.Model):
+    age = models.CharField(max_length=10, blank=True, null=True)
+    gender = models.CharField(max_length=10, blank=True, null=True)
+    occupation = models.IntegerField(blank=True, null=True)
+    city = models.CharField(max_length=10, blank=True, null=True)
+    years = models.CharField(max_length=10, blank=True, null=True)
+    marital_status = models.IntegerField(blank=True, null=True)
+    prefer_cats = models.CharField(max_length=20, blank=True, null=True)
+    create_time = models.IntegerField(blank=True, default = 0)
+    update_time = models.IntegerField(blank=True, default = 0)
+    status = models.IntegerField(blank=True, default = 1)
+
+    class Meta:
+        managed = False
+        db_table = 'negative_samples'

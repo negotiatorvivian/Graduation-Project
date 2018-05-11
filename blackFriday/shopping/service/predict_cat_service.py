@@ -12,7 +12,7 @@ from conf import general_conf as GeneralConf
 from shopping import models as ShoppingModel
 from common import date_helper as DateHelper
 
-def predict_shopping(uid, gender, age, occupation, city_category, years, marital_status):
+def predict_shopping(gender, age, occupation, city_category, years, marital_status):
     list1 = []
     for i in range(PredictConf.CATEGORY_NUM):
         new_list = [i + 1, gender, age, occupation, city_category, years, marital_status]
@@ -102,8 +102,43 @@ def add_user(gender, age, occupation, city_category, years, marital_status):
     return res.id
 
 
+def add_negative_samples(gender, age, occupation, city_category, years, marital_status, categories):
+    time = DateHelper.Date.get_timestamp()
+    date = DateHelper.Date.round_day_stamp(time)
+    sample = {
+        'gender' : gender,
+        'age' : age,
+        'occupation' : occupation,
+        'city' : city_category,
+        'years' : years,
+        'marital_status' : marital_status,
+        'prefer_cats' : categories,
+        'create_time' : date,
+        'update_time' : date
+    }
+    res = ShoppingModel.NegativeSamples.objects.create(**sample)
+    if res is False:
+        return False
+    return True
 
 
+def check_diff(gender, age, occupation, city_category, years, marital_status, categories):
+    rec_list = predict_shopping(gender, age, occupation, city_category, years, marital_status)
+    rec_list = set(rec_list)
+    if len(categories) == 0:
+        return False
+    categories = set(categories.strip(',').split(','))
+    new_set = set()
+    for item in categories:
+        new_set.add(int(item))
+    diff = new_set - rec_list
+    if len(diff) == 0:
+        return False
+    ret = []
+    for item in diff:
+        ret.append(str(item))
+    diff = ','.join(ret)
+    return diff
 
 
 

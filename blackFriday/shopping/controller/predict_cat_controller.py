@@ -17,7 +17,7 @@ def predict_shopping(request):
     if res is False:
         return ResponseHelper.Response.fail(module = 'PREDICT_SHOPPING', errcode = -11002)
     uid = res
-    res = PredictCatService.predict_shopping(uid, gender, age, occupation, city_category, years, marital_status)
+    res = PredictCatService.predict_shopping(gender, age, occupation, city_category, years, marital_status)
     if res is None:
         return ResponseHelper.Response.fail(module = 'PREDICT_SHOPPING', errcode = -11000)
     if res is False:
@@ -34,4 +34,13 @@ def modify_model(request):
     city_category = request.get('city', 'B')
     years = request.get('years')
     marital_status = request.get('marital_status')
-    categories = request.get('categories').split(',')
+    categories = request.get('categories')
+    res = PredictCatService.check_diff(gender, age, occupation, city_category, years, marital_status, categories)
+    if res is not False:
+        categories = res
+        res = PredictCatService.add_negative_samples(gender, age, occupation, city_category, years, marital_status, categories)
+        if res is False:
+            return ResponseHelper.Response.fail(module = 'PREDICT_SHOPPING', errcode = -11003)
+        return ResponseHelper.Response.success(ret = res)
+    return ResponseHelper.Response.success(ret = res)
+
