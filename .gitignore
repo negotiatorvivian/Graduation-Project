@@ -1,0 +1,7 @@
+*.pyc
+**/dataset
+.DS_Store
+**/.DS_Store
+**/models
+**/data
+**/images

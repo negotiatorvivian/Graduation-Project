@@ -1,0 +1,1 @@
+DISPLAY_PIC_NUM = 4
