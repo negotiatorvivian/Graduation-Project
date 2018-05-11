@@ -1,4 +1,5 @@
 *.pyc
+blackFriday/train.csv
 *.csv
 **/*.csv
 **/.idea
