@@ -1,5 +1,6 @@
 *.pyc
 *.csv
+**/*.csv
 **/.idea
 **/dataset
 .DS_Store
