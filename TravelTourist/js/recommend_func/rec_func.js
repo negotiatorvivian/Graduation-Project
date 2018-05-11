@@ -39,7 +39,7 @@ function get_concrete_info(i){
 	else
 		var rec_list1 = JSON.parse(goods_list);
 	var container = document.getElementById('small-dialog');
-	console.log(rec_list1[i].trade_name);
+	// console.log(rec_list1[i].trade_name);
 	$(container).children("h2").text(rec_list1[i].trade_name);
 	var form = document.getElementById('dialog-form');
 	var div_list = $(form).find('div');
@@ -50,6 +50,8 @@ function get_concrete_info(i){
 	attr_list.push(rec_list1[i].score);
 	attr_list.push(information);
 	attr_list.push(time);
+	sessionStorage.setItem('latitude', rec_list1[i].latitude);
+	sessionStorage.setItem('longitude', rec_list1[i].longitude);
 
 	for (item in div_list){
 		if (item > attr_list.length - 1)
