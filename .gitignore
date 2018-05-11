@@ -1,7 +1,5 @@
 *.pyc
-blackFriday/train.csv
-*.csv
-**/*.csv
+cat*
 **/.idea
 **/dataset
 .DS_Store
