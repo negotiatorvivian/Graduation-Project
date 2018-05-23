@@ -7,6 +7,8 @@ default_info = {
 };
 var information = 'Credit Cards, Appointment';
 var time = '10:00-21:00';
+
+
 function load_good_info(){
 	var goods_list = sessionStorage.getItem('goods');
 	if (goods_list == null){
@@ -31,6 +33,7 @@ function load_good_info(){
 	
 }
 
+
 function get_concrete_info(i){
 	var goods_list = sessionStorage.getItem('goods');
 	if (goods_list == null){
@@ -52,6 +55,7 @@ function get_concrete_info(i){
 	attr_list.push(time);
 	sessionStorage.setItem('latitude', rec_list1[i].latitude);
 	sessionStorage.setItem('longitude', rec_list1[i].longitude);
+	sessionStorage.setItem('trade_name', rec_list1[i].trade_name);
 
 	for (item in div_list){
 		if (item > attr_list.length - 1)
@@ -60,6 +64,7 @@ function get_concrete_info(i){
 	}
 	return true;
 }
+
 
 function change_mode(){
 	var root_ele = document.getElementById('small-dialog');
@@ -71,6 +76,7 @@ function change_mode(){
 	$(root_ele).children("h2").text('Please choose the categories you like');
 	sessionStorage.setItem('trade_name', name);
 }
+
 
 function get_option(){
 	var container = document.getElementById('dialog-form');
@@ -90,6 +96,7 @@ function get_option(){
 
 
 }
+
 
 function add_negative(prefer_cats){
 	var res = sessionStorage.getItem('cur_user');

@@ -39,4 +39,20 @@ class ShoppingGoods(models.Model):
         db_table = 'shopping_goods'
 
 
+class ShoppingGoodsTest(models.Model):
+    trade_name = models.CharField(max_length=100, blank=True, null=True)
+    description = models.CharField(max_length=256, blank=True, null=True)
+    category = models.IntegerField(blank=True, null=True)
+    price = models.IntegerField(blank=True, null=True)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
+    features = models.CharField(max_length=100, blank=True, null=True)
+    score = models.FloatField(blank=True, null=True)
+    create_time = models.IntegerField(blank=True, default = 0)
+    update_time = models.IntegerField(blank=True, default = 0)
+    status = models.IntegerField(blank=True, default = 1)
+
+    class Meta:
+        managed = False
+        db_table = 'shopping_goods_test'
 

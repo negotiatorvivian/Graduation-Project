@@ -5,6 +5,8 @@ from sklearn import preprocessing
 import xgboost as xgb
 import random
 from xgboost import XGBClassifier
+import matplotlib.pyplot as plt
+
 
 def calAverage(df_train):
     for i in range(1,20+1):
@@ -64,14 +66,18 @@ for i in range(0, X.shape[1]):
         encoded_x = feature
     else:
         encoded_x = np.concatenate((encoded_x, feature), axis = 1)
-input = encoded_x.astype(int)   #标签数字化
-# output = xgb.DMatrix(input, label = ['cat','Gender','Age','Occupation','City_Category','Stay_In_Current_City_Years','Marital_Status','prob'])
-# output.save_binary(fname = 'data/binary_data')
-# exit(0)
+
+
+# for i in range(X.shape[1]):   #返回矩阵长度
+#     lbl = preprocessing.LabelEncoder()
+#     lbl.fit(list(X[:,i]))  #编码
+#     X[:, i] = lbl.transform(X[:, i])   #将文字转换为数字形式
+# input = X.astype(int)   #标签数字化
+
 params = {}
-params["min_child_weight"] = 10
-params["subsample"] = 0.7
-params["colsample_bytree"] = 0.7
+params["min_child_weight"] = 12
+params["subsample"] = 0.8
+params["colsample_bytree"] = 0.8
 params["scale_pos_weight"] = 0.8
 params["silent"] = 1
 params["max_depth"] = 6
@@ -84,11 +90,12 @@ params["eval_metric"] = "rmse"
 params["seed"] = 0
 
 plst = list(params.items())
-num_rounds = 1000
+num_rounds = 3000
 
 
 # -------------------------------------train------------------------------------
-X_train = input[:df_train.shape[0],:]
+X_train = encoded_x[:df_train.shape[0],:]
+# X_train = input[:df_train.shape[0],:]
 y_lable = target[:df_train.shape[0]]
 from sklearn.model_selection import train_test_split
 X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_lable, test_size=0.2)
@@ -96,10 +103,13 @@ xgtrain = xgb.DMatrix(X_train,
                       label=y_train)
 xgcv = xgb.DMatrix(X_valid, label = y_valid)
 watchlist = [(xgtrain, 'train'),(xgcv,'eval')]
-model_1_xgboost = xgb.train(plst, xgtrain, num_rounds,evals = watchlist,early_stopping_rounds=200,verbose_eval = 100)
+model_1_xgboost = xgb.train(plst, xgtrain, num_rounds,evals = watchlist,early_stopping_rounds=200,verbose_eval = 200)
 
 model_1_xgboost.save_model('models/blackFri_1.model')
 model_1_xgboost.dump_model('models/blackFri_1.raw.txt')
+# xgb.plot_importance(model_1_xgboost,importance_type = 'gain')
+# xgb.plot_importance(model_1_xgboost,importance_type = 'weight')
+# plt.show()
 
 
 # -------------------------------------predict------------------------------------

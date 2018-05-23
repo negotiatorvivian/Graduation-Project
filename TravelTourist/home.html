@@ -166,11 +166,11 @@
 		<!-- //banner-info-->
 		<div class="slides-box">
 			<ul class="slides">
-				<li style="background: url(images/s1.jpg) no-repeat;background-size:cover;"></li>
-				<li style="background: url(images/s2.jpg) no-repeat;background-size:cover;"></li>
-				<li style="background: url(images/s3.jpg) no-repeat;background-size:cover;"></li>
-				<li style="background: url(images/s4.jpg) no-repeat;background-size:cover;"></li>
-				<li style="background: url(images/s5.jpg) no-repeat;background-size:cover;"></li>
+				<li style="background: url(images/s1.jpg) no-repeat;background-size:cover;" class="pictures"></li>
+				<li style="background: url(images/s2.jpg) no-repeat;background-size:cover;" class="pictures"></li>
+				<li style="background: url(images/s3.jpg) no-repeat;background-size:cover;" class="pictures"></li>
+				<li style="background: url(images/s4.jpg) no-repeat;background-size:cover;" class="pictures"></li>
+				<li style="background: url(images/s5.jpg) no-repeat;background-size:cover;" class="pictures"></li>
 			</ul>
 		</div>
 		<!-- //banner  -->
@@ -242,22 +242,31 @@
 <!-- //for banner js file-->
 
 <!-- pop-up-box -->
-		<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
-		<script>
-			$(document).ready(function() {
-				$('.popup-with-zoom-anim').magnificPopup({
-					type: 'inline',
-					fixedContentPos: false,
-					fixedBgPos: true,
-					overflowY: 'auto',
-					closeBtnInside: true,
-					preloader: false,
-					midClick: true,
-					removalDelay: 300,
-					mainClass: 'my-mfp-zoom-in'
-				});														
-			});
-		</script>
+<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+<script>
+	$(document).ready(function() {
+		$('.popup-with-zoom-anim').magnificPopup({
+			type: 'inline',
+			fixedContentPos: false,
+			fixedBgPos: true,
+			overflowY: 'auto',
+			closeBtnInside: true,
+			preloader: false,
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-zoom-in'
+		});														
+	});
+	$(document).ready(function(){
+	if(navigator.geolocation) {  
+        // document.getElementById("support").innerHTML = "HTML5 Geolocation supported.";  
+      var res = navigator.geolocation.getCurrentPosition(updateLocation, handleLocationError, {timeout:10000}); 
+      
+    } else {  
+        // document.getElementById("support").innerHTML = "HTML5 Geolocation is not supported in  your browser.";  
+    }
+});
+</script>
 <!--//pop-up-box -->
 
 <!-- requried-jsfiles-for owl -->	<!-- testimonials -->
@@ -302,5 +311,6 @@
 
 
 <script type="text/javascript" src="js/info_func/user_info.js"></script>
+<script type="text/javascript" src="js/common/plugin.js"></script>
  </body>
  </html>

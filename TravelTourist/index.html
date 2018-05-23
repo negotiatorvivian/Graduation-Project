@@ -6,18 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
+<meta charset="UTF-8">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" /><!-- bootstrap-css -->
-
-<link href="css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" media="all" /><!-- bootstrap-multiselect-css -->
 
 <link href="css/owl.carousel.css" rel="stylesheet"><!-- Owl-carousel-CSS -->
 
 <link href="css/popup-box.css" rel="stylesheet" type="text/css" media="all" /><!-- pop-up css --> 
 
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/borain-timeChoice.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- <link href="css/style1.css" rel="stylesheet" type="text/css" media="all" /> -->
 
 <!-- banner css -->
 <link rel="stylesheet" href="css/poposlides.css" type="text/css" media="all" />
@@ -34,10 +35,28 @@
 <style>
       #map {
         height: 400px;
-        width: 80%;
-        margin-left: 10%;
+        width: 90%;
+        margin-left: 5%;
         margin-top : -50px;
        }
+       .map-control {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+        font-family: 'Roboto','sans-serif';
+        margin: 10px;
+        /* Hide the control initially, to prevent it from appearing
+           before the map loads. */
+        display: none;
+      }
+      #map .map-control { display: block; }
+
+       .selector-control {
+        font-size: 14px;
+        line-height: 30px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
     </style>
 </head>
 	
@@ -66,12 +85,12 @@
 						<ul class="nav navbar-nav navbar-right cl-effect-15">
 							<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 							<li class="hidden"><a class="page-scroll" href="#page-top"> </a></li>
-							<li><a class="page-scroll scroll" href="#home" style="display: none;">Home</a></li>
+							<li><a class="page-scroll " href="home.html" style="display: block;">Home</a></li>
 							<li><a class="page-scroll scroll" href="#packages">Recommendation</a></li>
 							<li><a class="page-scroll scroll" href="#testimonials">Mall</a></li>
-							<li><a class="page-scroll scroll" href="#route">Routes</a></li>
+							<li><a class="page-scroll scroll" href="#route" onclick="mark_destination()">Routes</a></li>
 							<!-- <li><a class="page-scroll scroll" href="#stats">Stats</a></li> -->
-							<li><a class="page-scroll scroll" href="#contact">Contact</a></li>
+							<!-- <li><a class="page-scroll scroll" href="#contact">Contact</a></li> -->
 						</ul>
 					</div>
 					<!-- /.navbar-collapse -->
@@ -95,10 +114,10 @@
 				<h4>Welcome to travel tourist</h4>
 				<h5>travel tourist</h5>
 				<p>Pellentesque accumsan cursus dui, sodales blandit urna sodales vitae Pellentesque accumsan cursus dui, sodales blandit urna urna sodales vitae ipsum Pellentesque accumsan cursus dui, sodales blan urna sodales vitaePellentesque accumsan cursus dui, sodales blan sodales vitae.</p>
-				<a href="#" class="button button--nina" data-text="Learn more" data-toggle="modal" data-target="#myModal">Read More</a>
+				<a href="javascript:void(0)" class="button button--nina" data-text="Learn more" data-toggle="modal" data-target="#myModal">Read More</a>
 			</div>
 			<div class="col-md-4 middle-img">
-				<img src="" alt="about image" />
+				<img src="a.jpg" alt="about image" />
 			</div>
 			<div class="col-md-4 about-top last">
 				<h4>Watch our recent video trip by travel tourist</h4>
@@ -115,7 +134,7 @@
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal">&times;</button> 
 									 <iframe src="https://player.vimeo.com/video/88224399"></iframe>	
-									<iframe src="#"></iframe>
+									<iframe src="javascript:void(0)"></iframe>
 								</div>
 							</div>
 						</div>
@@ -149,24 +168,9 @@
 	</div>	
 </div>	
 <!-- //about -->
- 
-<!-- travel -->
-<div class="travel" style="display: none;">
-	<div class="container">
-		<h4>Travel tourist</h4>
-		<h3>Better to see something once than hear about it a thousand times</h3>
-		<p>watch our video here</p>
-		<div class="text-center">
-			<a class="#" data-toggle="modal" data-target="#myModal1">
-				<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
-			</a>
-		</div>
-	</div>
-</div>
-<!-- //travel -->
 
 <!-- popular packages -->
-<div class="packages" id="packages">
+<div class="packages" id="packages" style="display: block;">
 	<div class="container">
 		<div class="wthree_head_section">
 			<h3 class="title">Recommendation</h3>
@@ -174,109 +178,150 @@
 		<div class="packages_grids">
 			<div class="packages_grid1">
 				<div class="col-md-3 package1" id="package0">
-					<img src="" alt="" />
+					<img src="a.jpg" alt="" />
 					<h4></h4>
 					<h5></h5>
 					<a href="#small-dialog" onclick="get_concrete_info(0)" class="w3_agileits_sign_up2 popup-with-zoom-anim ab scroll">More Details</a>
 				</div>
 				<div class="col-md-3 package1" id="package1">
-					<img src="" alt="" />
+					<img src="a.jpg" alt="" />
 					<h4></h4>
 					<h5></h5>
 					<a href="#small-dialog" onclick="get_concrete_info(1)" class="w3_agileits_sign_up2 popup-with-zoom-anim ab scroll">More Details</a>
 				</div>
-				<div class="col-md-6 package1" id="package5">
-					<img src="" alt="" />
+				<div class="col-md-6 package1" id="package9">
+					<img src="a.jpg" alt="" />
 				</div>
 				<div class="clearfix"></div>
 			</div>
 			<div class="packages_grid2">
-				<div class="col-md-6 package1" id="package4">
-					<img src="" alt="" />
+				<div class="col-md-6 package1" id="package8">
+					<img src="a.jpg" alt="" />
 				</div>
 				<div class="col-md-3 package1" id="package2">
-					<img src="" alt="" />
+					<img src="a.jpg" alt="" />
 					<h4></h4>
 					<h5></h5>
 					<a href="#small-dialog" onclick="get_concrete_info(2)" class="w3_agileits_sign_up2 popup-with-zoom-anim ab scroll">More Details</a>
 				</div>
 				<div class="col-md-3 package1" id="package3">
-					<img src="" alt="" />
+					<img src="a.jpg" alt="" />
 					<h4></h4>
 					<h5></h5>
 					<a href="#small-dialog" onclick="get_concrete_info(3)" class="w3_agileits_sign_up2 popup-with-zoom-anim ab scroll">More Details</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
+			<br>
+			<br>
+			<div class="packages_grids">
+				<div class="packages_grid1">
+					<div class="col-md-3 package1" id="package4">
+						<img src="a.jpg" alt="" />
+						<h4></h4>
+						<h5></h5>
+						<a href="#small-dialog" onclick="get_concrete_info(4)" class="w3_agileits_sign_up2 popup-with-zoom-anim ab scroll">More Details</a>
+					</div>
+					<div class="col-md-3 package1" id="package5">
+						<img src="a.jpg" alt="" />
+						<h4></h4>
+						<h5></h5>
+						<a href="#small-dialog" onclick="get_concrete_info(5)" class="w3_agileits_sign_up2 popup-with-zoom-anim ab scroll">More Details</a>
+					</div>
+					<div class="col-md-6 package1" id="package10">
+						<img src="a.jpg" alt="" />
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="packages_grid2">
+					<div class="col-md-6 package1" id="package11">
+						<img src="a.jpg" alt="" />
+					</div>
+					<div class="col-md-3 package1" id="package6">
+						<img src="a.jpg" alt="" />
+						<h4></h4>
+						<h5></h5>
+						<a href="#small-dialog" onclick="get_concrete_info(6)" class="w3_agileits_sign_up2 popup-with-zoom-anim ab scroll">More Details</a>
+					</div>
+					<div class="col-md-3 package1" id="package7">
+						<img src="a.jpg" alt="" />
+						<h4></h4>
+						<h5></h5>
+						<a href="#small-dialog" onclick="get_concrete_info(7)" class="w3_agileits_sign_up2 popup-with-zoom-anim ab scroll">More Details</a>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+		</div>
 		</div>
 	</div>
+
 </div>
 <!-- //popular packages -->
  
 <!-- agile_testimonials -->
-	<div class="agile_testimonials" id="testimonials">
-		<div class="container">
-			<div class="wthree_head_section" style="margin-top: -2em;">
-				<h3 class="title">More Places</h3>
-			</div>
+<div class="agile_testimonials" id="testimonials" style="display: none;">
+	<div class="container">
+		<div class="wthree_head_section" style="margin-top: -2em;">
+			<h3 class="title">More Places</h3>
+		</div>
 
-			<div class="agile_wthree_inner_grids">
-				<div class="test-agile_main_section">
-					<div id="owl-demo2" class="owl-carousel">
-						<div class="agile">
-							<div class="test-grid">
-								<div class="test-grid1">
-									<div class="test-grid2">
-										<img src="images/1.jpg" alt="" class="img-r">
-									</div>
-									<div class="test-grid2_text">
-										<h4>West Edmonton Mall</h4>
-									</div>
-									<div class="clearfix"></div>
+		<div class="agile_wthree_inner_grids">
+			<div class="test-agile_main_section">
+				<div id="owl-demo2" class="owl-carousel">
+					<div class="agile">
+						<div class="test-grid">
+							<div class="test-grid1">
+								<div class="test-grid2">
+									<img src="images/1.jpg" alt="" class="img-r">
 								</div>
-								<p class="para-w3-agile">The West Edmonton Mall is located in Edmonton, Alberta, Canada and is the largest shopping mall in North America and the fifth largest in the world. There are more than 800 shops, a variety of dining and snack bars, 3D amusement parks, golf courses, water parks, sea lion shows, pet zoos, shooting ranges, hotels, cinemas, radio stations, etc.</p>
-								<i class="fa fa-quote-left" aria-hidden="true"></i>
+								<div class="test-grid2_text">
+									<h4>West Edmonton Mall</h4>
+								</div>
+								<div class="clearfix"></div>
 							</div>
+							<p class="para-w3-agile">The West Edmonton Mall is located in Edmonton, Alberta, Canada and is the largest shopping mall in North America and the fifth largest in the world. There are more than 800 shops, a variety of dining and snack bars, 3D amusement parks, golf courses, water parks, sea lion shows, pet zoos, shooting ranges, hotels, cinemas, radio stations, etc.</p>
+							<i class="fa fa-quote-left" aria-hidden="true"></i>
 						</div>
-						<div class="agile">
-							<div class="test-grid">
-								<div class="test-grid1">
-									<div class="test-grid2">
-										<img src="images/2.jpg" alt="" class="img-r">
-									</div>
-									<div class="test-grid2_text">
-										<h4>Bangkok siam shopping mall</h4>
-									</div>
-									<div class="clearfix"></div>
+					</div>
+					<div class="agile">
+						<div class="test-grid">
+							<div class="test-grid1">
+								<div class="test-grid2">
+									<img src="images/2.jpg" alt="" class="img-r">
 								</div>
-								<p class="para-w3-agile">There are opera halls, cinemas, luxury hotels, bowling alleys, art galleries, sea worlds, restaurants, shops, etc. The Bangkok shopping mall is also one of the largest shopping centers in Asia, attracting many tourists from all over the world every year.Hope you can have fun there.</p>
-								<i class="fa fa-quote-left" aria-hidden="true"></i>
+								<div class="test-grid2_text">
+									<h4>Bangkok siam shopping mall</h4>
+								</div>
+								<div class="clearfix"></div>
 							</div>
+							<p class="para-w3-agile">There are opera halls, cinemas, luxury hotels, bowling alleys, art galleries, sea worlds, restaurants, shops, etc. The Bangkok shopping mall is also one of the largest shopping centers in Asia, attracting many tourists from all over the world every year.Hope you can have fun there.</p>
+							<i class="fa fa-quote-left" aria-hidden="true"></i>
 						</div>
-						<div class="agile">
-							<div class="test-grid">
-								<div class="test-grid1">
-									<div class="test-grid2">
-										<img src="images/3.jpg" alt="" class="img-r">
-									</div>
-									<div class="test-grid2_text">
-										<h4>Bangkok, Thailand Terminal 21</h4>
-									</div>
-									<div class="clearfix"></div>
+					</div>
+					<div class="agile">
+						<div class="test-grid">
+							<div class="test-grid1">
+								<div class="test-grid2">
+									<img src="images/3.jpg" alt="" class="img-r">
 								</div>
-								<p class="para-w3-agile">Bangkok's new hyper-popular shopping mall, Terminal 21, is one of the places where local young people are rushing and foreign travelers are famous for their personality. It is definitely one of the places you must visit in Bangkok next time.</p>
-								<i class="fa fa-quote-left" aria-hidden="true"></i>
+								<div class="test-grid2_text">
+									<h4>Bangkok, Thailand Terminal 21</h4>
+								</div>
+								<div class="clearfix"></div>
 							</div>
+							<p class="para-w3-agile">Bangkok's new hyper-popular shopping mall, Terminal 21, is one of the places where local young people are rushing and foreign travelers are famous for their personality. It is definitely one of the places you must visit in Bangkok next time.</p>
+							<i class="fa fa-quote-left" aria-hidden="true"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 <!-- //agile_testimonials -->
 	
 <!-- stats -->
-<div class="stats" id="stats">
+<div class="stats" id="stats" style="display: none;">
 	<div class="container">
 		<h3 class="title">Stats</h3>
 		<div class="agileits_stats_grids">
@@ -312,229 +357,97 @@
 <!-- //stats -->
 
 <!-- MAP -->
-<div class="w3ls-section contact" id="route">
+<div class="w3ls-section contact" id="route" style="display: none;">
 	<div class="container">
 		<div class="w3ls-title">
 			<h3 class="title">Optimum Route</h3>
 		</div>
-		<ul class="topstats clearfix">
-		<li class="col-xs-6 col-lg-2">
-	      <span class="title"><i class="fa fa-dot-circle-o"></i> Today Profit</span>
-	      	<h3>$36.45</h3>
-	      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> 26%</b> from yesterday</span>
+		<ul class="topstats clearfix" style="border:1px solid #ccc; border-radius: 10px;border-radius: 10px;padding-top: 8px;
+    padding-bottom: 3px;margin-bottom: 20px;">
+		<li class="col-xs-3 col-lg-3" id="destination0">
+	      <span class="title"><i class="fa fa-dot-circle-o"></i> Destination 1</span>
+	      	<h3></h3>
+	      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> km</b> from Here</span>
+    	</li>
+    	<li class="col-xs-3 col-lg-3" id="destination1">
+	      <span class="title"><i class="fa fa-dot-circle-o"></i> Destination 2</span>
+	      	<h3></h3>
+	      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> </b> from Here</span>
+    	</li>
+    	<li class="col-xs-3 col-lg-3" id="destination2">
+	      <span class="title"><i class="fa fa-dot-circle-o"></i> Destination 3</span>
+	      	<h3></h3>
+	      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> </b> from Here</span>
+    	</li>
+    	<li class="col-xs-3 col-lg-3" id="destination3">
+	      <span class="title"><i class="fa fa-dot-circle-o"></i> Destination 4</span>
+	      	<h3></h3>
+	      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> </b> from Here</span>
     	</li>
     	</ul>
-	</div>
+    	<div id="datepicker" style="margin-bottom: 100px; padding-left: 10%;">
+			<div class="col-md-2 col-xs-4 form-time-w3layouts editContent">
+				<label class="editContent"><span class="fa fa-calendar" aria-hidden="true">&nbsp;&nbsp;</span>Year</label>
+				<input type="text" name="year" width="40%" class="col-xs-10">
+			</div>
+			<div class="col-md-2 form-time-w3layouts editContent">
+				<label class="editContent"><span class="" aria-hidden="true"></span>Month</label>
+				<input type="text" name="month" width="50%" class="col-xs-10">
+			</div>
+			<div class="col-md-2 form-time-w3layouts editContent">
+				<label class="editContent"><span class="" aria-hidden="true"></span>Date</label>
+				<input type="text" name="date" width="50%" class="col-xs-10">
+			</div>
+			<div class="col-md-2 form-time-w3layouts editContent">
+				<label class="editContent"><span class="fa fa-clock-o" aria-hidden="true">&nbsp;&nbsp;</span>Hour</label>
+				<input type="text" name="hour" width="50%" class="col-xs-10">
+			</div>
+			<div class="col-md-2 form-time-w3layouts editContent">
+				<label class="editContent"><span class="" aria-hidden="true"></span>Minute</label>
+				<input type="text" name="minute" width="50%" class="col-xs-10">
+			</div>
 </div>
-<div id="map">
+		<div class="packages_grids">
+			<div class="packages_grid1">
+				<div class="col-md-12 package1" id="">
+					<a href="javascript:void(0)" onclick="route_design(111)" class="w3_agileits_sign_up2 ab scroll">Search</a>
+				</div>
+			</div>
+		</div>
+		<div id="directions-panel">
+			
+		</div>
+	</div>
+
+
+</div>
+<div id="style-selector-control"  class="map-control">
+      <select id="style-selector" class="selector-control">
+        <option value="default">Default</option>
+        <option value="silver">Silver</option>
+        <option value="night">Night mode</option>
+        <option value="retro" selected="selected">Retro</option>
+        <option value="hiding">Hide features</option>
+      </select>
+</div>
+<div id="map" style="display: none; margin-bottom: 20px;">
 	
 </div>
 <!-- MAP -->
 
-<!-- contact -->
-<div class="w3ls-section contact" id="contact">
-	<div class="container">
-		<div class="w3ls-title">
-			<h3 class="title">get in touch</h3>
-		</div>
-		<div class="contact_wthreerow agileits-w3layouts" style="display: none;">
-		
-			<div class="col-md-7 w3l_contact_form">
-				<h4>Contact Form</h4>
-				<form action="#" method="post">
-					<input type="text" name="Name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}"
-					    required="">
-					<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"
-					    required="">
-					<input type="text" name="Phone" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}"
-					    required="">
-					<textarea name="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
-					<input type="submit" value="Submit">
-				</form>
-			</div>
-			<div class="col-md-5 agileits_w3layouts_contact_gridl">
-				<div class="agileits_mail_grid_right_grid">
-					<h4>Contact Info</h4>
-					<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur. Nunc id dui vitae urna tincidunt varius.</p>
-					<ul class="contact_info">
-						<li><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, 4th block,3FB,New Jersey.</li>
-						<li><span class="fa fa-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">info@example.com</a></li>
-						<li><span class="fa fa-phone" aria-hidden="true"></span>+1234 567 567</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-</div>
-<!-- //contact -->
-
-<!-- //book-form -->
-<div class="book-form index-book-form" id="book-form" style="display: none;">
-	<div class="panel-title">
-          <ul class="panel-tools">
-            <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
-          </ul>
-    </div>
-	<form action="index.html">
-		<div class="col-md-4 form-time-w3layouts editContent">
-				<label class="editContent"><span class="fa fa-transgender-alt" aria-hidden="true"></span> Traveller Sex</label>
-				<select class="form-control" id="gender">
-					<option value="M">Male</option>
-					<option value="F">Female</option>
-				</select>
-		</div>
-		<div class="col-md-4 form-date-w3-agileits editContent">
-				<label class="editContent"><span class="fa fa-street-view" aria-hidden="true"></span> Traveller Stage</label>
-				<select class="form-control" id="age">
-					<option value="a1">0-17</option>
-					<option value="a2">18-25</option>
-					<option value="a3">26-35</option>
-					<option value="a4">36-45</option>
-					<option value="a5">46-55</option>
-					<option value="a6">55+</option>
-				</select>
-		</div>
-		<div class="col-md-4 form-left-agileits-w3layouts editContent">
-			<label class="editContent"><span class="fa fa-briefcase" aria-hidden="true"></span> Occupation</label>
-			<select class="form-control" id="occupation">
-				<option value="1">Software Engineer</option>
-				<option value="2">Chemical Engineer</option>
-				<option value="3">Civil Engineer</option>
-				<option value="4">Sales Assistant/Receptionist</option>
-				<option value="5">Secretary</option>
-				<option value="6">Waiter/Waitress</option>
-				<option value="6">Barber</option>
-				<option value="7">Cashier/Auditor</option>
-				<option value="8">Teacher</option>
-				<option value="9">Doctor/Nurse</option>
-				<option value="10">Lawyer/Judge</option>
-				<option value="11">Student</option>
-				<option value="12">Athlete</option>
-				<option value="13">Police Officer</option>
-				<option value="14">Chef/Baker</option>
-				<option value="15">Driver</option>
-				<option value="16">Technician</option>
-				<option value="17">White-collar</option>
-				<option value="18">Farmer</option>
-				<option value="19">Jonrnal</option>
-				<option value="20">Singer/Dancer/Player</option>
-			</select>
-		</div>
-
-		<div class="col-md-4 form-date-w3-agileits editContent">
-				<label class="editContent"><span class="fa fa-map-marker" aria-hidden="true"></span> Current City</label>
-				<select class="form-control" id="city">
-					<option value="A">First-tier City</option>
-					<option value="B">Second-tier City</option>
-					<option value="C">Others</option>
-				</select>
-		</div>
-		<div class="col-md-4 form-date-w3-agileits editContent">
-				<label class="editContent"><span class="fa fa-calendar" aria-hidden="true"></span> In Current City</label>
-				<select class="form-control" id="years">
-					<option value="0">less than 1 year</option>
-					<option value="1">1 year</option>
-					<option value="2">2 years</option>
-					<option value="3">3 years</option>
-					<option value="4+">more than 4 years</option>
-				</select>
-		</div>	
-		<div class="col-md-4 form-left-agileits-w3layouts editContent">
-				<label class="editContent"><span class="fa fa-heartbeat" aria-hidden="true"></span> Marital Status</label>
-			<div class="agileits_w3layouts_main_gridl">
-				<select class="form-control" id="marital_status">
-					<option value="0">Single</option>
-					<!-- <option value="m2">Love</option> -->
-					<option value="1">Married</option>
-					<!-- <option value="m4">Divorced</option> -->
-				</select>
-			</div>
-		</div>															
-		<div class="col-md-4 form-left-agileits-submit editContent" style="margin-left: 33.333%;margin-top: -25px;margin-bottom: 10px;">
-			  <input type="button" value="Change" onclick="send_info()">
-		</div>
-		<div class="clearfix"></div>
-	</form>
-</div>
-<!-- //book-form -->
-
-<div class="slide-bar">
-	<ul>
-		<li class="active"><a class="loc" href="#"><span class="fa fa-angle-double-up fa-3x" aria-hidden="true" style="display:block;margin-top: -32px; margin-bottom: 5px;"></span>To Top</a></li>
-		<li><a class="wts-new" href="javascript:void(0)" onclick="show_dialog()"><span class="fa fa-pencil-square-o fa-3x" aria-hidden="true" style="display:block;margin-top: -32px; margin-bottom: 5px;"></span>Alter Info</a></li>
-	</ul>
-</div>
-<!-- //open book form  -->
 
 <!-- footer start here -->
-<div class="footer-agile" style="display:none;">
-	<!-- newsletter -->
-		<div class="footer-top">
-			<div class="agile-leftmk">
-				<form action="#" method="post">
-					<input type="email" placeholder="Enter Your Email Address" name="email" required="">
-					<input type="submit" value="Subscribe">
-					<div class="clearfix"></div>
-				</form>
-			</div>
-		</div>
-	<!-- //newsletter -->
+<div class="footer-agile" style="display:block;">
 		<div class="container">
-			<div class="footer-btm-agileinfo" >
-				<div class="col-md-3 col-xs-3 footer-grid w3social">
-					<h3>About us</h3>
-					<p class="footer-p1">Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Proin sed ligula 
-					ac metus finibus hendrerit sed at libero. Praesent reiciendis voluptatibus maiores alias.</p>
-					<a href="#">read more <span class="fa fa-long-arrow-right"></span></a>
-				</div>
-				<div class="col-md-3 col-xs-3 footer-grid">
-					<h3>Contact Info</h3>
-					<ul>
-						<li><i class="fa fa-phone"></i>+012 345 6789</li>
-						<li><i class="fa fa-fax"></i>+987 654 3210</li>
-						<li><i class="fa fa-map-marker"></i>Kmome St, NY 10002, Canada.</li>
-						<li><i class="fa fa-envelope-o"></i><a href="mailto:example@mail.com">mail@example.com</a></li>
-						<li><i class="fa fa-envelope-o"></i><a href="mailto:example@mail.com">mail1@example1.com</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2 col-xs-3 footer-grid w3social">
-					<h3>Quick Links</h3>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="#about" class="scroll">About</a></li>
-						<li><a href="#packages" class="scroll">Packages</a></li>
-						<li><a href="#testimonials" class="scroll">Happy Customers</a></li>
-						<li><a href="#contact" class="scroll">Contact Us</a></li>
-					</ul>
-				</div>
-				<div class="col-md-4 col-xs-3 footer-grid">
-					<h3>Latest Tweets</h3>
-					<ul class="tweet-agile">
-					<li>
-						<i class="fa fa-twitter-square" aria-hidden="true"></i>
-						<p class="tweet-p1"><a href="mailto:support@company.com">@example</a> sit amet consectetur adipiscing. <a href="#">http://ax.by/zzzz</a></p>
-						<p class="tweet-p2">Posted 3 days ago.</p>
-					</li>
-					<li>
-						<i class="fa fa-twitter-square" aria-hidden="true"></i>
-						<p class="tweet-p1"><a href="mailto:support@company.com">@example</a> sit amet consectetur adipiscing. <a href="#">http://cx.dy/zzzz</a></p>
-						<p class="tweet-p2">Posted 3 days ago.</p>
-					</li>
-				</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
 			<div class="footer-agilem">
 				<div class="col-sm-8 col-xs-9 copy-w3lsright">
-					<p>Copyright &copy; 2018.All rights reserved.<a target="_blank" href="javascript:void(0)">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+					<p>Copyright &copy; 2018.All rights reserved.<a target="_blank" href="javascript:void(0)"></a></p>
 				</div>
 				<div class="col-sm-4 col-xs-3 social-w3licon">
-					<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
-					<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
-					<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
-					<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+					<a href="http://www.ituite.com/" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+					<a href="https://zh-tw.facebook.com/" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+					<a href="https://www.google.com.hk/" class="social-button google"><i class="fa fa-google-plus"></i></a>
+					<a href="https://en.wikipedia.org/wiki/Main_Page" class="social-button dribbble"><i class="fa fa-wikipedia-w"></i></a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -543,241 +456,238 @@
 <!-- //footer end here -->
 
 <!-- popup signup form -->
-	<div class="wthree_pop_up"> 
-		<div id="small-dialog" class="mfp-hide agile_signup_form" style="margin-top: -100px;">
-			<h2></h2>
-			<form action="javascript:void(0)" method="post" id="dialog-form">
-			
-				<div class="form-control"> 
-					<label class="header1">Trade Name <span>:</span></label>
-					<p style=""></p>
-<!-- 					<input type="text" id="tardename" name="firstname" placeholder="Full Name" title="Please enter your Full Name" required=""> -->
-				</div>
-				
-				<div class="form-control">
-					<label class="editContent">Address <span>:</span></label>
-					<p></p>
-				</div>
-
-				<div class="form-control">	
-					<label class="header1">Key Words<span>:</span></label>
-					<p></p>
-				</div>
-
-				<div class="form-control">	
-					<label class="header1">Score <span>:</span></label>
-					<p></p>
-				</div>
-				
-				<div class="form-control">	
-					<label class="editContent">Information<span>:</span></label>
-					<p></p>
-				</div>
-				
-				<div class="form-control">	
-					<label class="editContent">hours<span>:</span></label>
-					<!-- <input class="date has Datepicker" id="datepicker" name="Text" type="text" value="Return Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '21/11/2017';}" required=""> -->
-					<p></p>
-				</div>
-				<br>
-				<div class="" style="display: none;" id="warn_info">
-					<p style="font-style: 6px; color: red;margin-left: 25%">We have received your feedback.</p>
-				</div>
-				<div class="" style="display: none;" id="success_info">
-					<p style="font-style: 6px; color: red;margin-left: 40%">In your cart!</p>
-				</div>
-				<div class="packages_grids" style="min-height: 40px;">
-					<div class="w3_submit packages_grid1" style="margin: 0px;min-height: 50px; width: 100%;">
-					<div class="col-md-6 package1">
-						<input type="submit" id="like" onclick="add_to_cart()" class="register package1" value="Add To My Cart" style="width:100%;float:left"></div>
-					<div class="col-md-6 package1"><input type="submit" onclick="change_mode()" class="register" value="dislike" style="display: inline;width:100%;background-color: #2c925e; "></div>	
-					</div>
-				</div>
-				<br>
-			</form>
-			<!-- start CheckBox -->
-			<form id="cat-select" style="display: none;" action="javascript:void(0)" class="packages_grids">
-				<div class="packages_grid1">
-		            <div class="package1 col-md-4">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox1" type="checkbox" name="checkboxs" value="1">
-			                <label for="checkbox1">
-			                    Category 1
-			                </label>
-			            </div>
-			        </div>
-		            <div class="package1 col-md-4">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox2" type="checkbox" name="checkboxs" value="2">
-			                <label for="checkbox2">
-			                    Category 2
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox3" type="checkbox" value="3" name="checkboxs">
-			                <label for="checkbox3">
-			                    Category 3
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox4" type="checkbox" value="4" name="checkboxs">
-			                <label for="checkbox4">
-			                    Category 4
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox5" type="checkbox" value="5" name="checkboxs">
-			                <label for="checkbox5">
-			                    Category 5
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox6" type="checkbox" value="6" name="checkboxs">
-			                <label for="checkbox6">
-			                    Category 6
-			                </label>
-			            </div>
-			        </div>			     
-
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox7" type="checkbox" value="7" name="checkboxs">
-			                <label for="checkbox7">
-			                    Category 7
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox8" type="checkbox" value="8" name="checkboxs">
-			                <label for="checkbox8">
-			                    Category 8
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox9" type="checkbox" value="9" name="checkboxs">
-			                <label for="checkbox9">
-			                    Category 9
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox10" type="checkbox" value="10" name="checkboxs">
-			                <label for="checkbox10">
-			                    Category 10
-			                </label>
-			            </div>
-			        </div>
-<!-- 		        </div>
-		        <div class="packages_grid1"> -->
-		            <div class="package1 col-md-4">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox11" value="11" type="checkbox" name="checkboxs">
-			                <label for="checkbox11">
-			                    Category 11
-			                </label>
-			            </div>
-			        </div>
-		            <div class="package1 col-md-4">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox12" value="12" type="checkbox" name="checkboxs">
-			                <label for="checkbox12">
-			                    Category 12
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox13" value="13" type="checkbox" name="checkboxs">
-			                <label for="checkbox13">
-			                    Category 13
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox14" value="14" type="checkbox" name="checkboxs">
-			                <label for="checkbox14">
-			                    Category 14
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox15" value="15" type="checkbox" name="checkboxs">
-			                <label for="checkbox15">
-			                    Category 15
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox16" value="16" type="checkbox" name="checkboxs">
-			                <label for="checkbox16">
-			                    Category 16
-			                </label>
-			            </div>
-			        </div>			     
-
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox17" value="17" type="checkbox" name="checkboxs">
-			                <label for="checkbox17">
-			                    Category 17
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox18" value="18" type="checkbox" name="checkboxs">
-			                <label for="checkbox18">
-			                    Category 18
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox19" value="19" type="checkbox" name="checkboxs">
-			                <label for="checkbox19">
-			                    Category 19
-			                </label>
-			            </div>
-			        </div>
-			        <div class="col-md-4 package1">
-			            <div class="checkbox checkbox-danger">
-			                <input id="checkbox20" value="20" type="checkbox" name="checkboxs">
-			                <label for="checkbox20">
-			                    Category 20
-			                </label>
-			            </div>
-			        </div>
-	            </div>
-	            <div class="w3_submit">
-					<input type="submit" onclick="get_option()" id="dislike" class="register" value="Submit" style="background-color: #2c925e;width: 100%;">
-				</div>
-		</form>
-		<!-- end CheckBox -->
-			
-
+<div class="wthree_pop_up"> 
+	<div id="small-dialog" class="mfp-hide agile_signup_form" style="margin-top: -100px;">
+		<h2></h2>
+		<form action="javascript:void(0)" method="post" id="dialog-form">
+		
+			<div class="form-control"> 
+				<label class="header1">Trade Name <span>:</span></label>
+				<p style=""></p>
 			</div>
-              </div>
+			
+			<div class="form-control">
+				<label class="editContent">Address <span>:</span></label>
+				<p></p>
+			</div>
+
+			<div class="form-control">	
+				<label class="header1">Key Words<span>:</span></label>
+				<p></p>
+			</div>
+
+			<div class="form-control">	
+				<label class="header1">Score <span>:</span></label>
+				<p></p>
+			</div>
+			
+			<div class="form-control">	
+				<label class="editContent">Information<span>:</span></label>
+				<p></p>
+			</div>
+			
+			<div class="form-control">	
+				<label class="editContent">hours<span>:</span></label>
+				<!-- <input class="date has Datepicker" id="datepicker" name="Text" type="text" value="Return Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '21/11/2017';}" required=""> -->
+				<p></p>
+			</div>
+			<br>
+			<div class="" style="display: none;" id="warn_info">
+				<p style="font-style: 6px; color: red;margin-left: 25%">We have received your feedback.</p>
+			</div>
+			<div class="" style="display: none;" id="success_info">
+				<p style="font-style: 6px; color: red;margin-left: 40%">In your cart!</p>
+			</div>
+			<div class="packages_grids" style="min-height: 40px;">
+				<div class="w3_submit packages_grid1" style="margin: 0px;min-height: 50px; width: 100%;">
+				<div class="col-md-6 package1">
+					<input type="submit" id="like" onclick="add_to_cart()" class="register package1" value="Add To My Cart" style="width:100%;float:left"></div>
+				<div class="col-md-6 package1"><input type="submit" onclick="change_mode()" class="register" value="dislike" style="display: inline;width:100%;background-color: #2c925e; "></div>	
+				</div>
+			</div>
+			<br>
+		</form>
+		<!-- start CheckBox -->
+		<form id="cat-select" style="display: none;" action="javascript:void(0)" class="packages_grids">
+			<div class="packages_grid1">
+	            <div class="package1 col-md-4">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox1" type="checkbox" name="checkboxs" value="1">
+		                <label for="checkbox1">
+		                    Category 1
+		                </label>
+		            </div>
+		        </div>
+	            <div class="package1 col-md-4">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox2" type="checkbox" name="checkboxs" value="2">
+		                <label for="checkbox2">
+		                    Category 2
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox3" type="checkbox" value="3" name="checkboxs">
+		                <label for="checkbox3">
+		                    Category 3
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox4" type="checkbox" value="4" name="checkboxs">
+		                <label for="checkbox4">
+		                    Category 4
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox5" type="checkbox" value="5" name="checkboxs">
+		                <label for="checkbox5">
+		                    Category 5
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox6" type="checkbox" value="6" name="checkboxs">
+		                <label for="checkbox6">
+		                    Category 6
+		                </label>
+		            </div>
+		        </div>			     
+
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox7" type="checkbox" value="7" name="checkboxs">
+		                <label for="checkbox7">
+		                    Category 7
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox8" type="checkbox" value="8" name="checkboxs">
+		                <label for="checkbox8">
+		                    Category 8
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox9" type="checkbox" value="9" name="checkboxs">
+		                <label for="checkbox9">
+		                    Category 9
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox10" type="checkbox" value="10" name="checkboxs">
+		                <label for="checkbox10">
+		                    Category 10
+		                </label>
+		            </div>
+		        </div>
+	            <div class="package1 col-md-4">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox11" value="11" type="checkbox" name="checkboxs">
+		                <label for="checkbox11">
+		                    Category 11
+		                </label>
+		            </div>
+		        </div>
+	            <div class="package1 col-md-4">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox12" value="12" type="checkbox" name="checkboxs">
+		                <label for="checkbox12">
+		                    Category 12
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox13" value="13" type="checkbox" name="checkboxs">
+		                <label for="checkbox13">
+		                    Category 13
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox14" value="14" type="checkbox" name="checkboxs">
+		                <label for="checkbox14">
+		                    Category 14
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox15" value="15" type="checkbox" name="checkboxs">
+		                <label for="checkbox15">
+		                    Category 15
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox16" value="16" type="checkbox" name="checkboxs">
+		                <label for="checkbox16">
+		                    Category 16
+		                </label>
+		            </div>
+		        </div>			     
+
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox17" value="17" type="checkbox" name="checkboxs">
+		                <label for="checkbox17">
+		                    Category 17
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox18" value="18" type="checkbox" name="checkboxs">
+		                <label for="checkbox18">
+		                    Category 18
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox19" value="19" type="checkbox" name="checkboxs">
+		                <label for="checkbox19">
+		                    Category 19
+		                </label>
+		            </div>
+		        </div>
+		        <div class="col-md-4 package1">
+		            <div class="checkbox checkbox-danger">
+		                <input id="checkbox20" value="20" type="checkbox" name="checkboxs">
+		                <label for="checkbox20">
+		                    Category 20
+		                </label>
+		            </div>
+		        </div>
+            </div>
+            <div class="w3_submit">
+				<input type="submit" onclick="get_option()" id="dislike" class="register" value="Submit" style="background-color: #2c925e;width: 100%;">
+			</div>
+		</form>
+	<!-- end CheckBox -->
 	</div>
+  </div>
+</div>
 
 
 <!-- js -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="js/common/plugin.js"></script>
+<script type="text/javascript" src="js/common/map_func.js"></script>
 <!-- //js -->
 
 <!-- bootstrap -->
@@ -797,15 +707,6 @@
 </script>
 <!-- //Stats-Number-Scroller-Animation-JavaScript -->
 
-<!-- Calendar -->
-<link rel="stylesheet" href="css/jquery-ui.css" />
-	<script src="js/jquery-ui.js"></script>
-	<script>
-		$(function() {
-			$( "#datepicker,#datepicker1" ).datepicker();
-		});
-	</script>
-<!-- //Calendar -->
 		
 <!-- for banner js file-->
 <script src="js/poposlides.js"></script>
@@ -940,26 +841,29 @@
 	
 		});
 
-	// map api initial
-	function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-	        zoom: 4,
-	        center: uluru,
-	        mapTypeControl: true,
-	        scaleControl: true,
-  			// mapTypeControlOptions: {
-    	// 		style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-  			// }
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });		
-      }
 
 </script>
+<script src="js/borain-timeChoice.js">
+//  level分为 YM YMD H HM 四个有效值，分别表示年月 年月日 年月日时 年月日时分,less表示是否不可小于当前时间。年-月-日 时:分 时为24小时制
+//  为确保控件结构只出现一次，在有需要的时候进行一次调用。
+    onLoadTimeChoiceDemo();
 
+    borainTimeChoice({
+        start:".start",
+        end:".end",
+        level:"YM",
+        less:true
+    });
+
+    borainTimeChoice({
+        start:".start-two",
+        end:"",
+        level:"H",
+        less:false
+    });
+
+
+</script>
 <!-- User js --> 
 <script type="text/javascript" src="js/info_func/user_info.js"></script>
 <script type="text/javascript" src="js/recommend_func/rec_func.js"></script>
@@ -978,8 +882,12 @@
 <script src="js/require.js"></script>
 <!-- //for bootstrap working -->
 
+<!-- for date-picker -->
+<script type="text/javascript" src="js/borain-timeChoice.js"></script>
+<!-- for date-picker -->
+
 <!-- Google Map Api --> 
- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCxxGVTHObFEHv7WGjbFiiR-3SEm4PAahE&callback=initMap" async defer></script>
+ <!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCxxGVTHObFEHv7WGjbFiiR-3SEm4PAahE&callback=initialize" async defer></script> -->
 <!-- //Google Map Api --> 
 </body>
 </html>

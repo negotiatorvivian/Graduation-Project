@@ -30417,3 +30417,29 @@ function (args, quit, logger, build) {
         typeof Components !== 'undefined' && Components.interfaces) ?
         Array.prototype.slice.call(arguments, 0) : []),
     (typeof readFile !== 'undefined' ? readFile : undefined)));
+
+  /**
+   * Bootstrap Date time picker
+   */
+   
+  // if (plugins.bootstrapDateTimePicker.length) {
+  //   var i;
+  //   for (i = 0; i < plugins.bootstrapDateTimePicker.length; i++) {
+  //     var $dateTimePicker = $(plugins.bootstrapDateTimePicker[i]);
+  //     var options = {};
+
+  //     options['format'] = 'dddd DD MMMM YYYY - HH:mm';
+  //     if ($dateTimePicker.attr("data-time-picker") == "date") {
+  //       options['format'] = 'MM/DD/YYYY';
+  //       options['minDate'] = new Date();
+  //     } else if ($dateTimePicker.attr("data-time-picker") == "time") {
+  //       options['format'] = 'HH:mm';
+  //     }
+
+  //     options["time"] = ($dateTimePicker.attr("data-time-picker") != "date");
+  //     options["date"] = ($dateTimePicker.attr("data-time-picker") != "time");
+  //     options["shortTime"] = true;
+
+  //     $dateTimePicker.bootstrapMaterialDatePicker(options);
+  //   }
+  // }

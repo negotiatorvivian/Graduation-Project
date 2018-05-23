@@ -23,7 +23,7 @@ def print_top_words(model, feature_names, n_top_words):
     print()
 # --------------read model-file--------------------
 model_list = ''
-f = open('dataset/out_pre')
+f = open('dataset/output2')
 for index, line in enumerate(f.readlines()):
     if line.split():
         model_list += line

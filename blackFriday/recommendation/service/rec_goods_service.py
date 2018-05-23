@@ -7,7 +7,7 @@ from conf import recommend_conf as RecommendConf
 from common import string_helper as StringHelper
 
 def get_demand_goods(res_list, append_list = None):
-    res = RecommendModel.ShoppingGoods.objects.filter(category__in = res_list, status = GeneralConf.STATUS_VALID).order_by('-score')
+    res = RecommendModel.ShoppingGoodsTest.objects.filter(category__in = res_list, status = GeneralConf.STATUS_VALID).order_by('-score')
     if res is False or len(res) == 0:
         return False
     # print(len(res), res)
@@ -28,7 +28,7 @@ def get_demand_goods(res_list, append_list = None):
     # print(ret)
     if len(ret) > RecommendConf.DISPLAY_PIC_NUM:
         return ret
-    res = RecommendModel.ShoppingGoods.objects.filter(category__in = append_list, status = GeneralConf.STATUS_VALID).order_by('-score')
+    res = RecommendModel.ShoppingGoodsTest.objects.filter(category__in = append_list, status = GeneralConf.STATUS_VALID).order_by('-score')
     for good in res:
         row = {}
         row['trade_name'] = good.trade_name
