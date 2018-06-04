@@ -2123,3 +2123,6 @@ input, textarea, select, button {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }*/
+li .tight-layout{
+    margin-left: -20px;
+}

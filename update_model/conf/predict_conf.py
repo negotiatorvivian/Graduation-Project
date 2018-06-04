@@ -4,11 +4,12 @@ REPEAT_TIME = 10
 
 PARAMS = {
 	'min_child_weight' : 10,
-	'subsample' : 0.7,
-	'colsample_bytree' : 0.7,
-	'scale_pos_weight0' : .8,
+	'subsample' : 0.8,
+	'colsample_bytree' : 0.8,
+	'scale_pos_weight0' : 1.2,
 	'silent' : 1,
 	'max_depth' : 6,
+	'gamma' : 1,
 	'nthread' : 6,
 	'objective' : "reg:linear",
 	'eta' : 0.1,
@@ -19,4 +20,4 @@ PARAMS = {
 
 NUM_ROUNDS = 1000
 
-PROB = 1
+PROB = 3

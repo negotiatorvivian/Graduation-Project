@@ -36,7 +36,7 @@ function handleLocationError(error){
 		alert("Can't get your location. Wait and try again.");  
 	}
 	else{
-		alert("Time out. Check your internet");  
+		// alert("Time out. Check your internet");  
 	}
 
 }

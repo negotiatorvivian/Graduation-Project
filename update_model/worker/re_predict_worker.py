@@ -24,8 +24,9 @@ class RePredictWorker(object):
         self.mysql_statistic = MysqlUtil.Mysql(conf = MysqlConf.SHOPPING)
     
     def append_data(self):
-        time = DateHelper.Date.get_timestamp()
+        time = DateHelper.Date.get_timestamp(delta = -1)
         date = DateHelper.Date.round_day_stamp(time)
+        print(date)
         sql = '''
             select 
                 * 
@@ -43,16 +44,20 @@ class RePredictWorker(object):
             if len(item['prefer_cats']) == 0:
                 return False
             cats = item['prefer_cats'].split(',')
-            row.append(PredictConf.PROB)
+            # row.append(PredictConf.PROB)
             for cat in cats:
+                row.append(round(random.uniform(1, 2), 3))
                 res = [cat]
                 res = res + row
                 sample_list.append(res)
+                row.pop()
         if len(sample_list) == 0:
             return False
         data_class_list = np.array(sample_list)
+        print(data_class_list)
         sample_list = pd.DataFrame(data_class_list, columns = PredictConf.LABEL)
         sample = pd.concat([self.origin_data, sample_list], ignore_index = True)
+        # sample.to_csv('inter_result.csv', index = False)
         sample.to_csv(self.input_path, index = False)
 
         times = np.array([PredictConf.REPEAT_TIME]).repeat(len(sample_list))
@@ -99,8 +104,8 @@ class RePredictWorker(object):
         xgcv = xgb.DMatrix(X_valid, label = y_valid)
         watchlist = [(xgtrain, 'train'),(xgcv,'eval')]
         model_1_xgboost = xgb.train(params, xgtrain, PredictConf.NUM_ROUNDS,
-                                    evals = watchlist, early_stopping_rounds = 500, 
-                                    verbose_eval = 100)
+                                    evals = watchlist, early_stopping_rounds = 200, 
+                                    verbose_eval = 200)
 
         model_1_xgboost.save_model(self.path + '/blackFri_1.model')
         model_1_xgboost.dump_model(self.path + '/blackFri_1.raw.txt')

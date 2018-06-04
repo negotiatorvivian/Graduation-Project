@@ -34,7 +34,7 @@
 <!-- //google fonts -->
 <style>
       #map {
-        height: 400px;
+        height: 600px;
         width: 90%;
         margin-left: 5%;
         margin-top : -50px;
@@ -259,7 +259,7 @@
 <!-- //popular packages -->
  
 <!-- agile_testimonials -->
-<div class="agile_testimonials" id="testimonials" style="display: none;">
+<div class="agile_testimonials" id="testimonials" style="display: block;">
 	<div class="container">
 		<div class="wthree_head_section" style="margin-top: -2em;">
 			<h3 class="title">More Places</h3>
@@ -294,7 +294,7 @@
 								</div>
 								<div class="clearfix"></div>
 							</div>
-							<p class="para-w3-agile">There are opera halls, cinemas, luxury hotels, bowling alleys, art galleries, sea worlds, restaurants, shops, etc. The Bangkok shopping mall is also one of the largest shopping centers in Asia, attracting many tourists from all over the world every year.Hope you can have fun there.</p>
+							<p class="para-w3-agile">There are opera halls, cinemas, luxury hotels, bowling alleys, art galleries, sea worlds, restaurants, shops, etc. The Bangkok shopping mall is also one of the largest shopping centers in Asia, attracting many tourists from all over the world every year.Hope you can have fun there.You can also bring your family and friends.It's a good place for gathering.</p>
 							<i class="fa fa-quote-left" aria-hidden="true"></i>
 						</div>
 					</div>
@@ -364,62 +364,73 @@
 		</div>
 		<ul class="topstats clearfix" style="border:1px solid #ccc; border-radius: 10px;border-radius: 10px;padding-top: 8px;
     padding-bottom: 3px;margin-bottom: 20px;">
-		<li class="col-xs-3 col-lg-3" id="destination0">
-	      <span class="title"><i class="fa fa-dot-circle-o"></i> Destination 1</span>
-	      	<h3></h3>
-	      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> km</b> from Here</span>
-    	</li>
-    	<li class="col-xs-3 col-lg-3" id="destination1">
-	      <span class="title"><i class="fa fa-dot-circle-o"></i> Destination 2</span>
-	      	<h3></h3>
-	      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> </b> from Here</span>
-    	</li>
-    	<li class="col-xs-3 col-lg-3" id="destination2">
-	      <span class="title"><i class="fa fa-dot-circle-o"></i> Destination 3</span>
-	      	<h3></h3>
-	      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> </b> from Here</span>
-    	</li>
-    	<li class="col-xs-3 col-lg-3" id="destination3">
-	      <span class="title"><i class="fa fa-dot-circle-o"></i> Destination 4</span>
-	      	<h3></h3>
-	      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> </b> from Here</span>
-    	</li>
+			<li class="col-xs-3 col-lg-3" id="destination0">
+		      <span class="title"><i class="fa fa-dot-circle-o" style="color: #0000FF"></i> Destination 1</span>
+		      	<h3></h3>
+		      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> km</b> from Here</span>
+	    	</li>
+	    	<li class="col-xs-3 col-lg-3" id="destination1">
+		      <span class="title"><i class="fa fa-dot-circle-o" style="color: #fb51e6"></i> Destination 2</span>
+		      	<h3></h3>
+		      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> </b> from Here</span>
+	    	</li>
+	    	<li class="col-xs-3 col-lg-3" id="destination2">
+		      <span class="title"><i class="fa fa-dot-circle-o" style="color: red"></i> Destination 3</span>
+		      	<h3></h3>
+		      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> </b> from Here</span>
+	    	</li>
+	    	<li class="col-xs-3 col-lg-3" id="destination3">
+		      <span class="title"><i class="fa fa-dot-circle-o" style="color:#70cff9"></i> Destination 4</span>
+		      	<h3></h3>
+		      <span class="diff"><b class="color-down"><i class="fa fa-caret-down"></i> </b> from Here</span>
+	    	</li>
     	</ul>
-    	<div id="datepicker" style="margin-bottom: 100px; padding-left: 10%;">
+    	<div id="datepicker" style="margin-bottom: 100px;">
 			<div class="col-md-2 col-xs-4 form-time-w3layouts editContent">
 				<label class="editContent"><span class="fa fa-calendar" aria-hidden="true">&nbsp;&nbsp;</span>Year</label>
-				<input type="text" name="year" width="40%" class="col-xs-10">
+				<input type="text" id="year" width="40%" class="col-xs-10">
 			</div>
 			<div class="col-md-2 form-time-w3layouts editContent">
 				<label class="editContent"><span class="" aria-hidden="true"></span>Month</label>
-				<input type="text" name="month" width="50%" class="col-xs-10">
+				<input type="text" id="month" width="50%" class="col-xs-10">
 			</div>
 			<div class="col-md-2 form-time-w3layouts editContent">
 				<label class="editContent"><span class="" aria-hidden="true"></span>Date</label>
-				<input type="text" name="date" width="50%" class="col-xs-10">
+				<input type="text" id="date" width="50%" class="col-xs-10">
 			</div>
 			<div class="col-md-2 form-time-w3layouts editContent">
 				<label class="editContent"><span class="fa fa-clock-o" aria-hidden="true">&nbsp;&nbsp;</span>Hour</label>
-				<input type="text" name="hour" width="50%" class="col-xs-10">
+				<input type="text" id="hour" width="50%" class="col-xs-10">
 			</div>
 			<div class="col-md-2 form-time-w3layouts editContent">
 				<label class="editContent"><span class="" aria-hidden="true"></span>Minute</label>
-				<input type="text" name="minute" width="50%" class="col-xs-10">
+				<input type="text" id="minute" width="50%" class="col-xs-10">
 			</div>
-</div>
-		<div class="packages_grids">
+			<div id="floating-panel" class="col-md-2 form-time-w3layouts editContent">
+    			<!-- <b>Mode of Travel: </b> -->
+    			<label class="editContent"><span class="" aria-hidden="true"></span>Mode of Travel:</label>
+			    <select id="mode">
+			      <option value="DRIVING">Driving</option>
+<!-- 			      <option value="WALKING">Walking</option>
+			      <option value="BICYCLING">Bicycling</option> -->
+			      <option value="TRANSIT">Transit</option>
+			    </select>
+			</div>
+		</div>
+		<div class="packages_grids" style="height: auto;">
 			<div class="packages_grid1">
 				<div class="col-md-12 package1" id="">
-					<a href="javascript:void(0)" onclick="route_design(111)" class="w3_agileits_sign_up2 ab scroll">Search</a>
+					<a href="javascript:void(0)" onclick="route_design(111)" class="w3_agileits_sign_up2 ab">Search</a>
 				</div>
 			</div>
 		</div>
-		<div id="directions-panel">
-			
+		<div class="" style="padding-top: 60px;">
+			<ul class=" clearfix" style="padding-top: 8px;
+    			padding-bottom: 3px;margin-bottom: 20px;display: none;" id="orders">
+
+    	</ul>
 		</div>
 	</div>
-
-
 </div>
 <div id="style-selector-control"  class="map-control">
       <select id="style-selector" class="selector-control">
@@ -430,10 +441,15 @@
         <option value="hiding">Hide features</option>
       </select>
 </div>
-<div id="map" style="display: none; margin-bottom: 20px;">
-	
+
+<div class="" id="float-panel" style="display: none;min-height: 600px; width: 100%; margin-bottom:30px;margin-top: -3em;">
+	<div class="col-md-12">
+		<div id="directions-panel" class="col-lg-4" style="float: right;width: 40%;max-height: 600px;overflow-y: scroll;display: inline-block;"></div>
+		<div id="map" style="margin-bottom: 20px;" class="col-lg-8"></div>
+		
+	</div>
 </div>
-<!-- MAP -->
+
 
 
 <!-- footer start here -->
@@ -843,27 +859,7 @@
 
 
 </script>
-<script src="js/borain-timeChoice.js">
-//  level分为 YM YMD H HM 四个有效值，分别表示年月 年月日 年月日时 年月日时分,less表示是否不可小于当前时间。年-月-日 时:分 时为24小时制
-//  为确保控件结构只出现一次，在有需要的时候进行一次调用。
-    onLoadTimeChoiceDemo();
 
-    borainTimeChoice({
-        start:".start",
-        end:".end",
-        level:"YM",
-        less:true
-    });
-
-    borainTimeChoice({
-        start:".start-two",
-        end:"",
-        level:"H",
-        less:false
-    });
-
-
-</script>
 <!-- User js --> 
 <script type="text/javascript" src="js/info_func/user_info.js"></script>
 <script type="text/javascript" src="js/recommend_func/rec_func.js"></script>
@@ -881,10 +877,6 @@
 <!-- for bootstrap working -->
 <script src="js/require.js"></script>
 <!-- //for bootstrap working -->
-
-<!-- for date-picker -->
-<script type="text/javascript" src="js/borain-timeChoice.js"></script>
-<!-- for date-picker -->
 
 <!-- Google Map Api --> 
  <!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCxxGVTHObFEHv7WGjbFiiR-3SEm4PAahE&callback=initialize" async defer></script> -->

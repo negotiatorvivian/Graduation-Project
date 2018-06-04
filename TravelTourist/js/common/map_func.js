@@ -305,7 +305,7 @@ function mark_destination(){
     }
      
     document.getElementById('route').style.display = 'block';
-    document.getElementById('map').style.display = 'block';
+    document.getElementById('float-panel').style.display = 'block';
     if(document.getElementById('map') == null)
       return false;
     var script = document.createElement('script');
@@ -330,7 +330,7 @@ function initMap() {
 
     var map = new google.maps.Map(document.getElementById('map'), {
       center: cur_location,
-      zoom: 13,
+      zoom: 11,
       mapTypeControl: false
     });
     var trafficLayer = new google.maps.TrafficLayer();
@@ -342,17 +342,17 @@ function initMap() {
 
     var styleControl = document.getElementById('style-selector-control');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(styleControl);
-
+    
     var styleSelector = document.getElementById('style-selector');
     map.setOptions({styles: styles[styleSelector.value]});
 
     styleSelector.addEventListener('change', function() {
       map.setOptions({styles: styles[styleSelector.value]});
     });	
-    google.maps.event.addListener(marker, 'click', function() {
-      map.setZoom(9);
-      map.setCenter(marker.getPosition());
-    });
+
+    document.getElementById('mode').addEventListener('change', function() {
+          // calcRoute(directionsService, directionsDisplay);
+        });
     directionsDisplay.setMap(map);
 
     var res = sessionStorage.getItem('points');
@@ -360,15 +360,23 @@ function initMap() {
 
     var res = sessionStorage.getItem('trade_names');
     var names = JSON.parse(res);
-
+    // var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var colors = ['#0000FF', '#fb51e6', 'red', '#70cff9','#aa7942', '#ff9300', ];
     for(var i in destinations){
       var lat = new Number(destinations[i].latitude);
       var lon = new Number(destinations[i].longitude);
       var cur_location = {lat:lat.valueOf(), lng:lon.valueOf()};
-      var marker = new google.maps.Marker({
-        position: cur_location,
-        map: map
-      }); 
+      var myCity = new google.maps.Circle({
+        center:cur_location,
+        radius:1600,
+        strokeColor:colors[i],
+        strokeOpacity:0.8,
+        strokeWeight:2,
+        fillColor:colors[i],
+        fillOpacity:0.4
+        });
+      myCity.setMap(map);
+
       var res = cal_distance(cur_lat, cur_lon, lat, lon);
       distances.push(res);
     }
@@ -397,56 +405,11 @@ function cal_distance(lat1, lng1, lat2, lng2) {
     return s
 };
 
-
-function calcRoute(start, destination, waypoints, time){
-  var start = start;
-  var end = destination;
-  var request = {
-    origin: start,
-    destination: destination,
-    travelMode: 'DRIVING',
-    // 'travelMode': 'TRANSIT',
-    // 'transitOptions': TransitOptions,
-    drivingOptions: {
-      departureTime: new Date(time),
-        trafficModel: 'pessimistic'
-    },
-    // unitSystem: UnitSystem.METRIC,
-    waypoints: waypoints,
-    optimizeWaypoints: true,
-    provideRouteAlternatives: true,
-    // 'avoidHighways': Boolean,
-    // 'avoidTolls': Boolean,
-    region: 'CN'
-  };
-  var directionsService = new google.maps.DirectionsService();
-
-  directionsService.route(request, function(response, status) {
-    if (status == 'OK') {
-        directionsDisplay.setDirections(response);
-        var route = response.routes[0];
-        var summaryPanel = document.getElementById('directions-panel');
-        summaryPanel.innerHTML = '';
-      // For each route, display summary information.
-        for (var i = 0; i < route.legs.length; i++) {
-            var routeSegment = i + 1;
-            summaryPanel.innerHTML += '<i class="fa fa-paper-plane-o" aria-hidden="true" style="color:#f3a448;"></i>&nbsp;&nbsp;' + route.legs[i].distance.text + '<br>';
-            summaryPanel.innerHTML += '<i class="fa fa-circle-o" aria-hidden="true" style="color:#2c925e;"></i>&nbsp;&nbsp;' + route.legs[i].start_address + '<br>';
-            summaryPanel.innerHTML += '<span class="fa fa-circle-o" aria-hidden="true" style="color:#db3552;"></span>&nbsp;&nbsp;' + route.legs[i].end_address + '<br><br>';
-            // summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-      }
-    }
-    else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
-}
-
-
 function route_design(time){
     var cur_lat = new Number(sessionStorage.getItem('cur_lat'));
     var cur_lon = new Number(sessionStorage.getItem('cur_lon'));
     var start = {lat:cur_lat.valueOf(), lng:cur_lon.valueOf()};
+    document.getElementById('orders').style.display = 'none';
 
     var res = sessionStorage.getItem('points');
     var destinations = JSON.parse(res);
@@ -462,10 +425,129 @@ function route_design(time){
         };
         waypoints.push(arg);
     }
-    var destination = waypoints.pop().location;
-    var d = Date.UTC(2018,5,24,7,0,0);
+    // var destination = waypoints.pop().location;
+    sessionStorage.setItem('waypoints', JSON.stringify(waypoints));
+    var destination = start;
+    var year = Number($('#year').val());
+    var month = Number($('#month').val());
+    var date = Number($('#date').val());
+    var hour = Number($('#hour').val());
+    var minute = Number($('#minute').val());
+    var d = Date.UTC(year,month,date,hour,minute,0);
     calcRoute(start, destination, waypoints, d);
 
 }
 
 
+function calcRoute(start, destination, waypoints, time){
+  var start = start;
+  var end = destination;
+  var selectedMode = document.getElementById('mode').value;
+  var request = {
+    origin: start,
+    destination: destination,
+    travelMode: 'DRIVING',
+    drivingOptions: {
+      departureTime: new Date(time),
+        trafficModel: 'bestguess'
+    },
+    unitSystem: google.maps.UnitSystem.METRIC,
+    waypoints: waypoints,
+    optimizeWaypoints: true,
+    provideRouteAlternatives: true,
+    region: 'CN'
+  };
+
+  var directionsService = new google.maps.DirectionsService();
+  if (selectedMode == 'DRIVING'){
+      directionsService.route(request, function(response, status) {
+      if (status == 'OK') {
+          directionsDisplay.setDirections(response);
+          directionsDisplay.setPanel(document.getElementById('directions-panel'));
+          $('#map').css({'float': 'left','width':'55%', 'margin-top': '15px'});       
+      }
+      else {
+        window.alert('Directions request failed due to ' + status);
+      }
+  });
+  }
+  else if (selectedMode == 'TRANSIT') {
+      directionsService.route(request, function(response, status) {
+        if (status == 'OK'){
+          var route = response.routes[0].waypoint_order;
+          sessionStorage.setItem('route', JSON.stringify(route));
+          draw_waypoints(waypoints, route);    
+        }
+      });
+  }
+}
+
+function draw_waypoints(waypoints, route){
+  var list = new Array();
+  list.push('<li class="col-xs-2 col-lg-2" style="margin-left: -20px;border:1px solid #ccc; border-radius: 10px;border-radius: 10px;"><span class="title" style="font-size: medium;"><i class="fa fa-dot-circle-o" style="color: #0000FF"></i> \
+            Destination 1</span></li>');
+  list.push('<li class="col-xs-2 col-lg-2" style="margin-left: -20px;border:1px solid #ccc; border-radius: 10px;border-radius: 10px;"><span class="title" style="font-size: medium;"><i class="fa fa-dot-circle-o" style="color: #fb51e6"></i>\ Destination 2</span></li>');
+  list.push('<li class="col-xs-2 col-lg-2" style="margin-left: -20px;border:1px solid #ccc; border-radius: 10px;border-radius: 10px;"><span class="title" style="font-size: medium;"><i class="fa fa-dot-circle-o" style="color: red"></i> Destination 3</span></li>');
+  list.push('<li class="col-xs-2 col-lg-2" style="margin-left: -20px;border:1px solid #ccc; border-radius: 10px;border-radius: 10px;"><span class="title" style="font-size: medium;"><i class="fa fa-dot-circle-o" style="color:#70cff9"></i> Destination 4</span></li>');
+  $('#orders').text('');
+  $('#orders').append('<li class="col-xs-1 col-lg-1"><i class="fa fa-male fa-2x" style=" color:#ff9300"></i></li>\
+              <a href="javascript:void(0)"><li class="col-xs-1 col-lg-1" style="margin-left: -20px;" onclick="transit_route(' + Number(0) + ')"><i class="fa fa-hand-o-right fa-2x"></i></li></a>');
+  for(var i in route){
+    if(i < route.length - 1){
+      var order = Number(i) + 1;
+      $('#orders').append(list[route[i]] + '<li class="col-xs-1 col-lg-1" onclick="transit_route(' + order + ')"><a href="javascript:void(0)"><i class="fa fa-hand-o-right fa-2x"></i></li></a>');
+    }
+    else
+      $('#orders').append(list[route[i]]);
+
+  }
+  document.getElementById('orders').style.display = 'block';
+}
+
+
+function transit_route(order){
+    var res = sessionStorage.getItem('waypoints');
+    var waypoints = JSON.parse(res);
+    var res = sessionStorage.getItem('route');
+    var route = JSON.parse(res);
+    var order = Number(order);
+    var cur_lat = new Number(sessionStorage.getItem('cur_lat'));
+    var cur_lon = new Number(sessionStorage.getItem('cur_lon'));
+    var start = {lat:cur_lat.valueOf(), lng:cur_lon.valueOf()};
+    if(order == 0){
+      var s = start;
+      var d = waypoints[route[order]].location;
+    }
+    else if(order > 0 && order < route.length){
+      var s = waypoints[route[order - 1]].location;
+      var d = waypoints[route[order]].location;
+    }
+    else{
+      var s = waypoints[route[order - 1]].location;
+      var d = start;
+    }
+    var request = {
+      origin: s,
+      destination: d,
+      travelMode: 'TRANSIT',
+      transitOptions: {
+        departureTime: new Date(time),
+        modes: ['SUBWAY', 'BUS'],
+        routingPreference: 'FEWER_TRANSFERS'
+        },
+      unitSystem: google.maps.UnitSystem.METRIC,
+      region: 'CN'
+    };
+
+    var directionsService = new google.maps.DirectionsService();
+    directionsService.route(request, function(response, status) {
+    if (status == 'OK') {
+        directionsDisplay.setDirections(response);
+        directionsDisplay.setPanel(document.getElementById('directions-panel'));
+        $('#map').css({'float': 'left','width':'55%', 'margin-top': '15px'});         
+    }
+    else {
+      window.alert('Directions request failed due to ' + status);
+    }
+});
+}

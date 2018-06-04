@@ -1,4 +1,6 @@
 function add_to_cart(){
+	document.getElementById('route').style.display = 'none';
+	document.getElementById('float-panel').style.display = 'none';
 	var point = {
 		'latitude' : sessionStorage.getItem('latitude'),
 		'longitude' : sessionStorage.getItem('longitude')
